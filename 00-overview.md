@@ -55,10 +55,3 @@ Argo CD apps for IIQ Prod and UAT
 
 ---
 
-If you tell me:
-
-Which Ingress controller you've decided on,  
-Your planned CI tool (Jenkins vs GitHub/GitLab, etc.),  
-Whether Nexus will also host your Docker registry,
-
-I can give you a concrete "Day 1" playbook: exact order with sample commands and small YAML snippets you can follow step-by-step.
