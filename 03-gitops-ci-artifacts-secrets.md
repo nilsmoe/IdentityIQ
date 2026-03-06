@@ -34,7 +34,7 @@ Configure TLS.
 
 ## 3.3. CI system (Jenkins, GitHub Actions, GitLab CI, etc.)
 
-You said Ansible is ready; CI can be:
+If Ansible is ready; CI can be:
 
 Jenkins on node6 (env=mgmt), or  
 GitHub/GitLab cloud, whatever fits your org.
