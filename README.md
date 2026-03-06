@@ -1,7 +1,4 @@
-# IdentityIQ
-Identity IQ with GitOps continuous delivery on Kubernetes
-
-# IdentityIQ Kubernetes Platform Playbook
+# IdentityIQ Kubernetes installation Plan
 
 ## 1. Introduction & Assumptions
 
