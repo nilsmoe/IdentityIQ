@@ -133,6 +133,7 @@ Configure repositories:
 - Raw / Maven repo for identityiq.war.
 - Optionally proxy repos for Maven/JARs, Docker, etc.
 - Create a CI user with limited credentials.
+  
 Decide if Docker registry is:
 - Nexus Docker repo, or
 - External container registry (Harbor, ECR, ACR, etc.).
