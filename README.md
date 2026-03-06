@@ -42,3 +42,46 @@ Example:
 kubectl label nodes node1 node2 node3 env=prod
 kubectl label nodes node4 node5 env=uat
 kubectl label nodes node6 env=mgmt
+(You can add taints later if you want stricter separation.)
+
+### 2.2 Storage Class(es)
+Before CloudNativePG and IIQ, you need:
+
+A reliable default StorageClass for general workloads.
+Ideally a fast StorageClass for Prod DB (NVMe/SSD with good IOPS).
+Optionally a separate class for UAT DB.
+Make sure they are present and marked appropriately (isDefaultClass where needed).
+
+### 2.3 Cluster DNS / Time / Logging Basics
+Ensure NTP is set correctly from Ansible (time skew kills clusters).
+Confirm cluster DNS (CoreDNS) is healthy.
+Set baseline log shipping (even if just node logs → central syslog or similar).
+Once this is stable, move to tools.
+
+### 3. Core Cluster Add-ons (Platform Before Apps)
+Order here matters because higher layers depend on lower ones.
+
+### 3.1 Ingress Controller (e.g., NGINX)
+You’ll need an Ingress controller for:
+
+- Argo CD UI
+- Infisical UI
+- Possibly Nexus UI
+- Eventually IIQ (Prod + UAT URLs)
+- Install an Ingress controller early:
+
+Namespace: e.g. ingress-nginx
+Node pinning: nodeSelector.env=mgmt (so it runs on node6)
+Expose via your chosen LoadBalancer/NodePort + external DNS
+3.2 Certificate Management (Optional but Recommended)
+If you want TLS automation:
+
+Install cert-manager (CRDs, controller).
+Integrate with your internal CA or Let’s Encrypt (if reachable).
+This will later issue certs for:
+
+argocd.company.com
+infisical.company.com
+nexus.company.com
+iiq.company.com, iiq-uat.company.com
+You can skip this and manage certs manually, but cert-manager simplifies long‑term ops.
