@@ -42,6 +42,7 @@ Example:
 kubectl label nodes node1 node2 node3 env=prod
 kubectl label nodes node4 node5 env=uat
 kubectl label nodes node6 env=mgmt
+```
 (You can add taints later if you want stricter separation.)
 
 ### 2.2 Storage Class(es)
